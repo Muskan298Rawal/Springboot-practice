@@ -10,29 +10,31 @@ import java.util.List;
 @RestController
 public class HelloController {
 
+    private UserService userService = new UserService();
+
     @GetMapping("/users")
     public List<UserModel> getUsers(){
-        return UserService.getUsersList();
+        return userService.getUsersList();
     }
 
     @GetMapping("/users/{id}")
     public UserModel getSingleUser(@PathVariable Integer id){
-        return UserService.getUserById(id);
+        return userService.getUserById(id);
     }
 
     @DeleteMapping("/users/{id}")
     public void deleteUser(@PathVariable Integer id){
-        UserService.deleteUserById(id);
+        userService.deleteUserById(id);
     }
 
     @PostMapping("/users")
     public void addUser(@RequestBody UserModel newUser){
-        UserService.addNewUser(newUser);
+        userService.addNewUser(newUser);
     }
 
     @PutMapping("/users/{id}")
     public void updateUser(@RequestBody UserModel data, @PathVariable Integer id ){
-        UserService.updateUser(data, id);
+        userService.updateUser(data, id);
     }
 
 }
