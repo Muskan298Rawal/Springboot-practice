@@ -1,6 +1,7 @@
 package com.example.userProject.Controller;
 
 import com.example.userProject.Model.UserModel;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.userProject.Service.UserService;
@@ -10,7 +11,9 @@ import java.util.List;
 @RestController
 public class HelloController {
 
-    private UserService userService = new UserService();
+//    private UserService userService = new UserService();
+    @Autowired
+    UserService userService;
 
     @GetMapping("/users")
     public List<UserModel> getUsers(){
